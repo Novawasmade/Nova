@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nova Free Market - Downloads</title>
+  <title>Nova Free Market - Categories</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicon -->
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" type="image/png">
 
   <style>
+    /* ---------------- GLOBAL ---------------- */
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, sans-serif;
@@ -17,6 +18,7 @@
       overflow-x: hidden;
     }
 
+    /* STAR BACKGROUND */
     body::before {
       content: "";
       position: fixed;
@@ -34,9 +36,10 @@
       to { transform: translate(-50%, -50%); }
     }
 
+    /* ---------------- HEADER ---------------- */
     header {
       text-align: center;
-      padding: 50px 20px;
+      padding: 70px 20px;
       background: linear-gradient(135deg, #6a00ff, #00c3ff);
       box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
     }
@@ -46,30 +49,76 @@
     @keyframes floatText { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes fadeIn { to { opacity: 1; } }
 
-    .container { max-width: 1000px; margin: auto; padding: 30px 20px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
+    /* ---------------- NAV ---------------- */
+    nav {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(0, 0, 40, 0.7);
+      backdrop-filter: blur(6px);
+    }
+    nav a {
+      color: #9fd3ff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #e0b3ff;
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after { width: 100%; }
 
+    /* ---------------- CONTENT ---------------- */
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+    }
     .card {
-      background: rgba(20,20,60,0.8);
+      background: rgba(20,20,60,0.75);
       border-radius: 15px;
       padding: 25px;
       text-align: center;
-      cursor: pointer;
       box-shadow: 0 0 20px rgba(0,140,255,0.4);
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(40px);
     }
+    .card.show { opacity: 1; transform: translateY(0); }
     .card:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0,198,255,0.6); }
-    .card img { width: 100px; height: 100px; object-fit: contain; margin-bottom: 15px; }
+
+    .card img {
+      width: 100px;
+      height: 100px;
+      object-fit: contain;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.2);
+    }
+    .card h2 { color: #cfa8ff; margin-bottom: 10px; }
 
     button {
       background: linear-gradient(135deg, #7f00ff, #00c6ff);
       border: none;
       color: white;
-      padding: 14px 22px;
-      border-radius: 30px;
-      font-size: 1.1em;
+      padding: 12px 18px;
+      border-radius: 25px;
+      font-size: 1em;
       cursor: pointer;
-      box-shadow: 0 0 15px rgba(127, 0, 255, 0.8);
+      box-shadow: 0 0 15px rgba(127,0,255,0.7);
       animation: pulseGlow 2.5s infinite;
       transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
@@ -78,11 +127,19 @@
 
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 10px rgba(127, 0, 255, 0.6); }
-      50% { box-shadow: 0 0 25px rgba(127, 0, 255,1),0 0 45px rgba(0,198,255,0.8); }
-      100% { box-shadow: 0 0 10px rgba(127, 0, 255,0.6); }
+      50% { box-shadow: 0 0 25px rgba(127, 0, 255, 1), 0 0 45px rgba(0,198,255,0.8); }
+      100% { box-shadow: 0 0 10px rgba(127, 0, 255, 0.6); }
     }
 
-    .download-page { display: none; }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 40, 0.8);
+      color: #aaa;
+      margin-top: 40px;
+    }
+
+    .download-page { display: none; text-align: center; }
     .back-btn { margin-top: 20px; }
   </style>
 </head>
@@ -90,18 +147,23 @@
 
 <header>
   <h1>🌠 Nova Free Market 🌠</h1>
-  <p>Click a category to see downloads!</p>
+  <p>Choose a category to explore downloads!</p>
 </header>
+
+<nav>
+  <a href="#categories-page" onclick="backToCategories()">Categories</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
 
 <div class="container" id="categories-page">
   <div class="grid">
-    <!-- Category cards with updated icons -->
     <div class="card" onclick="openDownload('fivem')">
       <img src="https://i.pinimg.com/564x/5a/66/0f/5a660febec3a03937a7603715c0b2157.jpg" alt="FiveM">
       <h2>FiveM</h2>
     </div>
     <div class="card" onclick="openDownload('roblox')">
-      <img src="https://static.wikia.nocookie.net/gamingpedia/images/7/77/App-icon-roblox.png/revision/latest?cb=20210309193301" alt="Roblox">
+      <img src="https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/optimized/4X/f/7/c/f7c9f2a9f31bf5748c52fa1087126828a5333ac8_2_500x500.png" alt="Roblox">
       <h2>Roblox</h2>
     </div>
     <div class="card" onclick="openDownload('rust')">
@@ -119,7 +181,7 @@
   </div>
 </div>
 
-<!-- Download pages -->
+<!-- Download Pages -->
 <div class="container download-page" id="fivem">
   <h2>FiveM Downloads</h2>
   <p>FiveM multiplayer modification framework</p>
@@ -155,10 +217,39 @@
   <button class="back-btn" onclick="backToCategories()">Back to Categories</button>
 </div>
 
+<div class="container" id="about">
+  <div class="card show">
+    <h2>About</h2>
+    <p>This page hosts downloads with icons, categories, and stylish buttons — all galaxy‑themed.</p>
+  </div>
+</div>
+
+<div class="container" id="contact">
+  <div class="card show">
+    <h2>Contact</h2>
+    <p>Reach me somewhere in the universe 🌠</p>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Galaxy Site</p>
+</footer>
+
 <script>
   function downloadFile(link) {
     window.open(link, "_blank", "noopener");
   }
+
+  const cards = document.querySelectorAll(".card");
+  function revealOnScroll() {
+    cards.forEach(card => {
+      if(card.getBoundingClientRect().top < window.innerHeight - 100) {
+        card.classList.add("show");
+      }
+    });
+  }
+  window.addEventListener("scroll", revealOnScroll);
+  revealOnScroll();
 
   function openDownload(id) {
     document.getElementById('categories-page').style.display = 'none';

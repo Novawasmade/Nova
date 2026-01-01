@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Nova Free Market - Downloads</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <!-- Favicon -->
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" type="image/png">
 
@@ -121,13 +121,38 @@
       transform: translateY(0);
     }
 
-    .card h2 {
-      color: #cfa8ff;
+    .card img {
+      width: 80px;
+      height: 80px;
       margin-bottom: 15px;
     }
 
+    .card h2 {
+      color: #cfa8ff;
+      margin-bottom: 10px;
+    }
+
     .card p {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(127,0,255,0.3);
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 20px;
+      font-size: 0.8em;
+      margin: 3px;
+      transition: 0.2s ease;
+    }
+
+    .tag:hover {
+      background: rgba(0,198,255,0.5);
     }
 
     /* ---------------- BUTTON ---------------- */
@@ -194,35 +219,60 @@
   <div class="container" id="downloads">
     <!-- Download Card 1 -->
     <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="File 1 Icon">
       <h2>Download 1</h2>
+      <div class="tags">
+        <span class="tag">Software</span>
+        <span class="tag">Utility</span>
+      </div>
       <p>Description for file 1</p>
       <button onclick="downloadFile('https://mega.nz/file/WFJVCSjI#cNBvi1DRUFM26i1zInXuo2j4dt823kSXz2IP_H4CgKs')">Download</button>
     </div>
 
     <!-- Download Card 2 -->
     <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="File 2 Icon">
       <h2>Download 2</h2>
+      <div class="tags">
+        <span class="tag">Game</span>
+        <span class="tag">Adventure</span>
+      </div>
       <p>Description for file 2</p>
       <button onclick="downloadFile('https://mega.nz/file/EXAMPLE2#EXAMPLEKEY2')">Download</button>
     </div>
 
     <!-- Download Card 3 -->
     <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="File 3 Icon">
       <h2>Download 3</h2>
+      <div class="tags">
+        <span class="tag">Video</span>
+        <span class="tag">Tutorial</span>
+      </div>
       <p>Description for file 3</p>
       <button onclick="downloadFile('https://mega.nz/file/EXAMPLE3#EXAMPLEKEY3')">Download</button>
     </div>
 
     <!-- Download Card 4 -->
     <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888834.png" alt="File 4 Icon">
       <h2>Download 4</h2>
+      <div class="tags">
+        <span class="tag">Music</span>
+        <span class="tag">Audio</span>
+      </div>
       <p>Description for file 4</p>
       <button onclick="downloadFile('https://mega.nz/file/EXAMPLE4#EXAMPLEKEY4')">Download</button>
     </div>
 
     <!-- Download Card 5 -->
     <div class="card">
+      <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="File 5 Icon">
       <h2>Download 5</h2>
+      <div class="tags">
+        <span class="tag">Ebook</span>
+        <span class="tag">PDF</span>
+      </div>
       <p>Description for file 5</p>
       <button onclick="downloadFile('https://mega.nz/file/EXAMPLE5#EXAMPLEKEY5')">Download</button>
     </div>
@@ -231,7 +281,7 @@
   <div class="container" id="about">
     <div class="card">
       <h2>About</h2>
-      <p>This page hosts your free downloads in a galaxy-themed interface with glowing buttons and animations.</p>
+      <p>This page hosts your free downloads in a galaxy-themed interface with glowing buttons, icons, and categories.</p>
     </div>
   </div>
 
@@ -247,14 +297,13 @@
   </footer>
 
   <script>
-    // Function to open download links in a new tab
+    // Open download link in new tab
     function downloadFile(link) {
       window.open(link, "_blank", "noopener");
     }
 
     // Scroll reveal animation
     const cards = document.querySelectorAll(".card");
-
     function revealOnScroll() {
       cards.forEach(card => {
         const top = card.getBoundingClientRect().top;

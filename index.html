@@ -9,7 +9,6 @@
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" type="image/png">
 
   <style>
-    /* ---------------- GLOBAL ---------------- */
     body {
       margin: 0;
       font-family: "Segoe UI", Tahoma, sans-serif;
@@ -18,7 +17,6 @@
       overflow-x: hidden;
     }
 
-    /* STAR BACKGROUND */
     body::before {
       content: "";
       position: fixed;
@@ -32,93 +30,36 @@
     }
 
     @keyframes moveStars {
-      from { transform: translate(0, 0); }
+      from { transform: translate(0,0); }
       to { transform: translate(-50%, -50%); }
     }
 
     header {
       text-align: center;
-      padding: 70px 20px;
+      padding: 50px 20px;
       background: linear-gradient(135deg, #6a00ff, #00c3ff);
       box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
     }
     header h1 { font-size: 3em; animation: floatText 4s ease-in-out infinite; }
     header p { opacity: 0; animation: fadeIn 2s ease forwards; animation-delay: 1s; }
 
-    @keyframes floatText {
-      0%,100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
+    @keyframes floatText { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
     @keyframes fadeIn { to { opacity: 1; } }
 
-    nav {
-      text-align: center;
-      padding: 15px;
-      background-color: rgba(0, 0, 40, 0.7);
-      backdrop-filter: blur(6px);
-    }
-    nav a {
-      color: #9fd3ff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-      position: relative;
-    }
-    nav a::after {
-      content: ""; position: absolute; left: 0; bottom: -5px;
-      width: 0; height: 2px; background: #e0b3ff; transition: width 0.3s ease;
-    }
-    nav a:hover::after { width: 100%; }
-
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 30px 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-    }
+    .container { max-width: 1000px; margin: auto; padding: 30px 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; }
 
     .card {
-      background: rgba(20, 20, 60, 0.8);
+      background: rgba(20,20,60,0.8);
       border-radius: 15px;
       padding: 25px;
-      box-shadow: 0 0 20px rgba(0, 140, 255, 0.4);
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s ease;
       text-align: center;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0,140,255,0.4);
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
-    .card.show {
-      opacity: 1; transform: translateY(0);
-    }
-
-    .card img {
-      width: 100px;
-      height: 100px;
-      margin-bottom: 15px;
-      object-fit: contain;
-      border-radius: 10px;
-      border: 2px solid rgba(255,255,255,0.2);
-    }
-
-    .card h2 { color: #cfa8ff; margin-bottom: 10px; }
-    .card p { margin-bottom: 10px; }
-
-    .tags {
-      margin-bottom: 15px;
-    }
-    .tag {
-      display: inline-block;
-      background: rgba(127,0,255,0.3);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 20px;
-      font-size: 0.8em;
-      margin: 3px;
-      transition: 0.2s ease;
-    }
-    .tag:hover { background: rgba(0,198,255,0.5); }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(0,198,255,0.6); }
+    .card img { width: 100px; height: 100px; object-fit: contain; margin-bottom: 15px; }
 
     button {
       background: linear-gradient(135deg, #7f00ff, #00c6ff);
@@ -132,138 +73,103 @@
       animation: pulseGlow 2.5s infinite;
       transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
-    button:hover {
-      box-shadow:
-        0 0 20px rgba(127, 0, 255, 1),
-        0 0 45px rgba(0, 198, 255, 0.9);
-    }
+    button:hover { box-shadow: 0 0 20px rgba(127,0,255,1), 0 0 45px rgba(0,198,255,0.9); }
     button:active { transform: scale(0.92); }
 
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 10px rgba(127, 0, 255, 0.6); }
-      50% { box-shadow: 0 0 25px rgba(127, 0, 255, 1), 0 0 45px rgba(0, 198, 255, 0.8); }
-      100% { box-shadow: 0 0 10px rgba(127, 0, 255, 0.6); }
+      50% { box-shadow: 0 0 25px rgba(127, 0, 255,1),0 0 45px rgba(0,198,255,0.8); }
+      100% { box-shadow: 0 0 10px rgba(127, 0, 255,0.6); }
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 40, 0.8);
-      color: #aaa;
-      margin-top: 40px;
-    }
+    .download-page { display: none; }
+    .back-btn { margin-top: 20px; }
   </style>
 </head>
-
 <body>
-  <header>
-    <h1>🌠 Nova Free Market 🌠</h1>
-    <p>Your free downloads — ready to go!</p>
-  </header>
 
-  <nav>
-    <a href="#downloads">Downloads</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header>
+  <h1>🌠 Nova Free Market 🌠</h1>
+  <p>Click a category to see downloads!</p>
+</header>
 
-  <div class="container" id="downloads">
-
-    <!-- DOWNLOAD 1: FiveM -->
-    <div class="card">
-      <img src="https://logos-world.net/wp-content/uploads/2021/03/FiveM-Symbol.png" alt="FiveM Symbol">
+<div class="container" id="categories-page">
+  <div class="grid">
+    <!-- Category cards with updated icons -->
+    <div class="card" onclick="openDownload('fivem')">
+      <img src="https://i.pinimg.com/564x/5a/66/0f/5a660febec3a03937a7603715c0b2157.jpg" alt="FiveM">
       <h2>FiveM</h2>
-      <div class="tags">
-        <span class="tag">Mod</span>
-        <span class="tag">Gaming</span>
-      </div>
-      <p>FiveM multiplayer modification framework</p>
-      <button onclick="downloadFile('https://mega.nz/file/WFJVCSjI#cNBvi1DRUFM26i1zInXuo2j4dt823kSXz2IP_H4CgKs')">Download</button>
     </div>
-
-    <!-- DOWNLOAD 2: Roblox -->
-    <div class="card">
-      <img src="https://static.wikia.nocookie.net/logopedia/images/d/d6/Roblox_app_icon_2022.svg/revision/latest/scale-to-width-down/250?cb=20220319140506" alt="Roblox Logo">
+    <div class="card" onclick="openDownload('roblox')">
+      <img src="https://static.wikia.nocookie.net/gamingpedia/images/7/77/App-icon-roblox.png/revision/latest?cb=20210309193301" alt="Roblox">
       <h2>Roblox</h2>
-      <div class="tags">
-        <span class="tag">Game</span>
-        <span class="tag">Platform</span>
-      </div>
-      <p>Roblox resources & downloads</p>
-      <button onclick="downloadFile('https://mega.nz/file/EXAMPLE2#EXAMPLEKEY2')">Download</button>
     </div>
-
-    <!-- DOWNLOAD 3: Rust -->
-    <div class="card">
-      <img src="https://cdn2.steamgriddb.com/icon/c291b01517f3e6797c774c306591cc32.png" alt="Rust Logo">
+    <div class="card" onclick="openDownload('rust')">
+      <img src="https://cdn2.steamgriddb.com/icon/c291b01517f3e6797c774c306591cc32.png" alt="Rust">
       <h2>Rust</h2>
-      <div class="tags">
-        <span class="tag">Game</span>
-        <span class="tag">Survival</span>
-      </div>
-      <p>Rust game tools & resources</p>
-      <button onclick="downloadFile('https://mega.nz/file/EXAMPLE3#EXAMPLEKEY3')">Download</button>
     </div>
-
-    <!-- DOWNLOAD 4: DayZ -->
-    <div class="card">
-      <img src="https://dayz.com/img/dayz_thumb.jpg" alt="DayZ Image">
+    <div class="card" onclick="openDownload('dayz')">
+      <img src="https://dayz.com/img/dayz_thumb.jpg" alt="DayZ">
       <h2>DayZ</h2>
-      <div class="tags">
-        <span class="tag">Game</span>
-        <span class="tag">Zombies</span>
-      </div>
-      <p>DayZ related download</p>
-      <button onclick="downloadFile('https://mega.nz/file/EXAMPLE4#EXAMPLEKEY4')">Download</button>
     </div>
-
-    <!-- DOWNLOAD 5: Fortnite -->
-    <div class="card">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Fortnite_F_lettermark_logo.png" alt="Fortnite Logo">
+    <div class="card" onclick="openDownload('fortnite')">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Fortnite_F_lettermark_logo.png" alt="Fortnite">
       <h2>Fortnite</h2>
-      <div class="tags">
-        <span class="tag">Game</span>
-        <span class="tag">Battle Royale</span>
-      </div>
-      <p>Fortnite related resources</p>
-      <button onclick="downloadFile('https://mega.nz/file/EXAMPLE5#EXAMPLEKEY5')">Download</button>
-    </div>
-
-  </div>
-
-  <div class="container" id="about">
-    <div class="card">
-      <h2>About</h2>
-      <p>This page hosts downloads with icons, categories, and stylish buttons — all galaxy‑themed.</p>
     </div>
   </div>
+</div>
 
-  <div class="container" id="contact">
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Reach me somewhere in the universe 🌠</p>
-    </div>
-  </div>
+<!-- Download pages -->
+<div class="container download-page" id="fivem">
+  <h2>FiveM Downloads</h2>
+  <p>FiveM multiplayer modification framework</p>
+  <button onclick="downloadFile('https://mega.nz/file/WFJVCSjI#cNBvi1DRUFM26i1zInXuo2j4dt823kSXz2IP_H4CgKs')">Download</button>
+  <button class="back-btn" onclick="backToCategories()">Back to Categories</button>
+</div>
 
-  <footer>
-    <p>© 2026 Galaxy Site</p>
-  </footer>
+<div class="container download-page" id="roblox">
+  <h2>Roblox Downloads</h2>
+  <p>Roblox resources & downloads</p>
+  <button onclick="downloadFile('https://mega.nz/file/EXAMPLE2#EXAMPLEKEY2')">Download</button>
+  <button class="back-btn" onclick="backToCategories()">Back to Categories</button>
+</div>
 
-  <script>
-    function downloadFile(link) {
-      window.open(link, "_blank", "noopener");
-    }
+<div class="container download-page" id="rust">
+  <h2>Rust Downloads</h2>
+  <p>Rust game tools & resources</p>
+  <button onclick="downloadFile('https://mega.nz/file/EXAMPLE3#EXAMPLEKEY3')">Download</button>
+  <button class="back-btn" onclick="backToCategories()">Back to Categories</button>
+</div>
 
-    const cards = document.querySelectorAll(".card");
-    function revealOnScroll() {
-      cards.forEach(card => {
-        if (card.getBoundingClientRect().top < window.innerHeight - 100) {
-          card.classList.add("show");
-        }
-      });
-    }
-    window.addEventListener("scroll", revealOnScroll);
-    revealOnScroll();
-  </script>
+<div class="container download-page" id="dayz">
+  <h2>DayZ Downloads</h2>
+  <p>DayZ related download</p>
+  <button onclick="downloadFile('https://mega.nz/file/EXAMPLE4#EXAMPLEKEY4')">Download</button>
+  <button class="back-btn" onclick="backToCategories()">Back to Categories</button>
+</div>
+
+<div class="container download-page" id="fortnite">
+  <h2>Fortnite Downloads</h2>
+  <p>Fortnite related resources</p>
+  <button onclick="downloadFile('https://mega.nz/file/EXAMPLE5#EXAMPLEKEY5')">Download</button>
+  <button class="back-btn" onclick="backToCategories()">Back to Categories</button>
+</div>
+
+<script>
+  function downloadFile(link) {
+    window.open(link, "_blank", "noopener");
+  }
+
+  function openDownload(id) {
+    document.getElementById('categories-page').style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function backToCategories() {
+    document.getElementById('categories-page').style.display = 'block';
+    document.querySelectorAll('.download-page').forEach(page => page.style.display = 'none');
+  }
+</script>
+
 </body>
 </html>

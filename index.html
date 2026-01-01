@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nova Free Market - Downloads</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" type="image/png">
+
+  <style>
+    /* ---------------- GLOBAL ---------------- */
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: white;
+      background: radial-gradient(circle at top, #2b1055, #000010);
+      overflow-x: hidden;
+    }
+
+    /* STAR BACKGROUND */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      width: 200%;
+      height: 200%;
+      background: url("https://www.transparenttextures.com/patterns/stardust.png");
+      opacity: 0.4;
+      animation: moveStars 120s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes moveStars {
+      from { transform: translate(0, 0); }
+      to { transform: translate(-50%, -50%); }
+    }
+
+    /* ---------------- HEADER ---------------- */
+    header {
+      text-align: center;
+      padding: 70px 20px;
+      background: linear-gradient(135deg, #6a00ff, #00c3ff);
+      box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
+    }
+
+    header h1 {
+      font-size: 3em;
+      animation: floatText 4s ease-in-out infinite;
+    }
+
+    header p {
+      opacity: 0;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes floatText {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* ---------------- NAV ---------------- */
+    nav {
+      text-align: center;
+      padding: 15px;
+      background-color: rgba(0, 0, 40, 0.7);
+      backdrop-filter: blur(6px);
+    }
+
+    nav a {
+      color: #9fd3ff;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 2px;
+      background: #e0b3ff;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ---------------- CONTENT ---------------- */
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(20, 20, 60, 0.75);
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 20px rgba(0, 140, 255, 0.4);
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+      text-align: center;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card h2 {
+      color: #cfa8ff;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      margin-bottom: 20px;
+    }
+
+    /* ---------------- BUTTON ---------------- */
+    button {
+      background: linear-gradient(135deg, #7f00ff, #00c6ff);
+      border: none;
+      color: white;
+      padding: 14px 22px;
+      border-radius: 30px;
+      font-size: 1.1em;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(127, 0, 255, 0.8);
+      animation: pulseGlow 2.5s infinite;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      box-shadow:
+        0 0 20px rgba(127, 0, 255, 1),
+        0 0 45px rgba(0, 198, 255, 0.9);
+    }
+
+    button:active {
+      transform: scale(0.92);
+    }
+
+    @keyframes pulseGlow {
+      0% {
+        box-shadow: 0 0 10px rgba(127, 0, 255, 0.6);
+      }
+      50% {
+        box-shadow:
+          0 0 25px rgba(127, 0, 255, 1),
+          0 0 45px rgba(0, 198, 255, 0.8);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(127, 0, 255, 0.6);
+      }
+    }
+
+    /* ---------------- FOOTER ---------------- */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 40, 0.8);
+      color: #aaa;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>🌠 Nova Free Market 🌠</h1>
+    <p>All items are free! Click below to download.</p>
+  </header>
+
+  <nav>
+    <a href="#downloads">Downloads</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="container" id="downloads">
+    <!-- Download Card 1 -->
+    <div class="card">
+      <h2>Download 1</h2>
+      <p>Description for file 1</p>
+      <button onclick="downloadFile('https://mega.nz/file/WFJVCSjI#cNBvi1DRUFM26i1zInXuo2j4dt823kSXz2IP_H4CgKs')">Download</button>
+    </div>
+
+    <!-- Download Card 2 -->
+    <div class="card">
+      <h2>Download 2</h2>
+      <p>Description for file 2</p>
+      <button onclick="downloadFile('https://mega.nz/file/EXAMPLE2#EXAMPLEKEY2')">Download</button>
+    </div>
+
+    <!-- Download Card 3 -->
+    <div class="card">
+      <h2>Download 3</h2>
+      <p>Description for file 3</p>
+      <button onclick="downloadFile('https://mega.nz/file/EXAMPLE3#EXAMPLEKEY3')">Download</button>
+    </div>
+
+    <!-- Download Card 4 -->
+    <div class="card">
+      <h2>Download 4</h2>
+      <p>Description for file 4</p>
+      <button onclick="downloadFile('https://mega.nz/file/EXAMPLE4#EXAMPLEKEY4')">Download</button>
+    </div>
+
+    <!-- Download Card 5 -->
+    <div class="card">
+      <h2>Download 5</h2>
+      <p>Description for file 5</p>
+      <button onclick="downloadFile('https://mega.nz/file/EXAMPLE5#EXAMPLEKEY5')">Download</button>
+    </div>
+  </div>
+
+  <div class="container" id="about">
+    <div class="card">
+      <h2>About</h2>
+      <p>This page hosts your free downloads in a galaxy-themed interface with glowing buttons and animations.</p>
+    </div>
+  </div>
+
+  <div class="container" id="contact">
+    <div class="card">
+      <h2>Contact</h2>
+      <p>Reach me somewhere in the universe 🌠</p>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 Galaxy Site</p>
+  </footer>
+
+  <script>
+    // Function to open download links in a new tab
+    function downloadFile(link) {
+      window.open(link, "_blank", "noopener");
+    }
+
+    // Scroll reveal animation
+    const cards = document.querySelectorAll(".card");
+
+    function revealOnScroll() {
+      cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          card.classList.add("show");
+        }
+      });
+    }
+
+    window.addEventListener("scroll", revealOnScroll);
+    revealOnScroll();
+  </script>
+</body>
+</html>

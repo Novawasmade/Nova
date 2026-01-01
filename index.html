@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <title>Nova Free Market - Downloads</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Favicon -->
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/616/616408.png" type="image/png">
 
   <style>
@@ -36,42 +34,27 @@
       to { transform: translate(-50%, -50%); }
     }
 
-    /* ---------------- HEADER ---------------- */
     header {
       text-align: center;
       padding: 70px 20px;
       background: linear-gradient(135deg, #6a00ff, #00c3ff);
       box-shadow: 0 0 30px rgba(138, 43, 226, 0.8);
     }
-
-    header h1 {
-      font-size: 3em;
-      animation: floatText 4s ease-in-out infinite;
-    }
-
-    header p {
-      opacity: 0;
-      animation: fadeIn 2s ease forwards;
-      animation-delay: 1s;
-    }
+    header h1 { font-size: 3em; animation: floatText 4s ease-in-out infinite; }
+    header p { opacity: 0; animation: fadeIn 2s ease forwards; animation-delay: 1s; }
 
     @keyframes floatText {
-      0%, 100% { transform: translateY(0); }
+      0%,100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
     }
+    @keyframes fadeIn { to { opacity: 1; } }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
-    }
-
-    /* ---------------- NAV ---------------- */
     nav {
       text-align: center;
       padding: 15px;
       background-color: rgba(0, 0, 40, 0.7);
       backdrop-filter: blur(6px);
     }
-
     nav a {
       color: #9fd3ff;
       margin: 0 15px;
@@ -79,23 +62,12 @@
       font-weight: bold;
       position: relative;
     }
-
     nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -5px;
-      width: 0%;
-      height: 2px;
-      background: #e0b3ff;
-      transition: width 0.3s ease;
+      content: ""; position: absolute; left: 0; bottom: -5px;
+      width: 0; height: 2px; background: #e0b3ff; transition: width 0.3s ease;
     }
+    nav a:hover::after { width: 100%; }
 
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* ---------------- CONTENT ---------------- */
     .container {
       max-width: 1000px;
       margin: auto;
@@ -106,7 +78,7 @@
     }
 
     .card {
-      background: rgba(20, 20, 60, 0.75);
+      background: rgba(20, 20, 60, 0.8);
       border-radius: 15px;
       padding: 25px;
       box-shadow: 0 0 20px rgba(0, 140, 255, 0.4);
@@ -115,32 +87,25 @@
       transition: all 0.8s ease;
       text-align: center;
     }
-
     .card.show {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1; transform: translateY(0);
     }
 
     .card img {
-      width: 80px;
-      height: 80px;
+      width: 100px;
+      height: 100px;
       margin-bottom: 15px;
-      object-fit: contain;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.2);
     }
 
-    .card h2 {
-      color: #cfa8ff;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      margin-bottom: 10px;
-    }
+    .card h2 { color: #cfa8ff; margin-bottom: 10px; }
+    .card p { margin-bottom: 10px; }
 
     .tags {
       margin-bottom: 15px;
     }
-
     .tag {
       display: inline-block;
       background: rgba(127,0,255,0.3);
@@ -151,12 +116,8 @@
       margin: 3px;
       transition: 0.2s ease;
     }
+    .tag:hover { background: rgba(0,198,255,0.5); }
 
-    .tag:hover {
-      background: rgba(0,198,255,0.5);
-    }
-
-    /* ---------------- BUTTON ---------------- */
     button {
       background: linear-gradient(135deg, #7f00ff, #00c6ff);
       border: none;
@@ -169,16 +130,12 @@
       animation: pulseGlow 2.5s infinite;
       transition: transform 0.2s ease, box-shadow 0.3s ease;
     }
-
     button:hover {
       box-shadow:
         0 0 20px rgba(127, 0, 255, 1),
         0 0 45px rgba(0, 198, 255, 0.9);
     }
-
-    button:active {
-      transform: scale(0.92);
-    }
+    button:active { transform: scale(0.92); }
 
     @keyframes pulseGlow {
       0% { box-shadow: 0 0 10px rgba(127, 0, 255, 0.6); }
@@ -186,7 +143,6 @@
       100% { box-shadow: 0 0 10px rgba(127, 0, 255, 0.6); }
     }
 
-    /* ---------------- FOOTER ---------------- */
     footer {
       text-align: center;
       padding: 20px;
@@ -200,7 +156,7 @@
 <body>
   <header>
     <h1>🌠 Nova Free Market 🌠</h1>
-    <p>All items are free! Click below to download.</p>
+    <p>Your free downloads — ready to go!</p>
   </header>
 
   <nav>
@@ -210,71 +166,73 @@
   </nav>
 
   <div class="container" id="downloads">
-    <!-- Download Card 1 -->
+
+    <!-- Download 1 -->
     <div class="card">
       <img src="https://logos-world.net/wp-content/uploads/2021/03/FiveM-Logo-700x394.png" alt="FiveM Logo">
-      <h2>Download 1</h2>
+      <h2>FiveM</h2>
       <div class="tags">
-        <span class="tag">Software</span>
-        <span class="tag">Utility</span>
+        <span class="tag">Mod</span>
+        <span class="tag">Gaming</span>
       </div>
-      <p>Description for file 1</p>
+      <p>FiveM multiplayer modification framework.</p>
       <button onclick="downloadFile('https://mega.nz/file/WFJVCSjI#cNBvi1DRUFM26i1zInXuo2j4dt823kSXz2IP_H4CgKs')">Download</button>
     </div>
 
-    <!-- Download Card 2 -->
+    <!-- Download 2 -->
     <div class="card">
-      <img src="https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png" alt="Second File Logo">
-      <h2>Download 2</h2>
+      <img src="https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/4X/0/e/e/0eeeb19633422b1241f4306419a0f15f39d58de9.png" alt="File 2 Image">
+      <h2>Second Download</h2>
       <div class="tags">
-        <span class="tag">Game</span>
-        <span class="tag">Adventure</span>
+        <span class="tag">Tool</span>
+        <span class="tag">Utility</span>
       </div>
-      <p>Description for file 2</p>
+      <p>Description for second download file.</p>
       <button onclick="downloadFile('https://mega.nz/file/EXAMPLE2#EXAMPLEKEY2')">Download</button>
     </div>
 
-    <!-- Download Card 3 -->
+    <!-- Download 3 -->
     <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888841.png" alt="File 3 Icon">
-      <h2>Download 3</h2>
+      <img src="https://i.pinimg.com/736x/cc/40/6a/cc406a8382d8df7eb5f395ec884d3c95.jpg" alt="File 3 Image">
+      <h2>Third Download</h2>
       <div class="tags">
-        <span class="tag">Video</span>
-        <span class="tag">Tutorial</span>
+        <span class="tag">Image</span>
+        <span class="tag">Media</span>
       </div>
-      <p>Description for file 3</p>
+      <p>Description for third download file.</p>
       <button onclick="downloadFile('https://mega.nz/file/EXAMPLE3#EXAMPLEKEY3')">Download</button>
     </div>
 
-    <!-- Download Card 4 -->
+    <!-- Download 4 -->
     <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888834.png" alt="File 4 Icon">
-      <h2>Download 4</h2>
+      <img src="https://dayz.com/img/dayz_thumb.jpg" alt="DayZ Thumbnail">
+      <h2>DayZ Resource</h2>
       <div class="tags">
-        <span class="tag">Music</span>
-        <span class="tag">Audio</span>
+        <span class="tag">Game</span>
+        <span class="tag">Resource</span>
       </div>
-      <p>Description for file 4</p>
+      <p>Description for DayZ related download.</p>
       <button onclick="downloadFile('https://mega.nz/file/EXAMPLE4#EXAMPLEKEY4')">Download</button>
     </div>
 
-    <!-- Download Card 5 -->
+    <!-- Download 5 -->
     <div class="card">
-      <img src="https://cdn-icons-png.flaticon.com/512/888/888879.png" alt="File 5 Icon">
-      <h2>Download 5</h2>
+      <img src="https://cdn2.unrealengine.com/12br-delay-social-news-header-02-1920x1080-119208936.jpg" alt="Unreal Engine Image">
+      <h2>Unreal Asset</h2>
       <div class="tags">
-        <span class="tag">Ebook</span>
-        <span class="tag">PDF</span>
+        <span class="tag">Asset</span>
+        <span class="tag">Graphics</span>
       </div>
-      <p>Description for file 5</p>
+      <p>Description for Unreal asset file.</p>
       <button onclick="downloadFile('https://mega.nz/file/EXAMPLE5#EXAMPLEKEY5')">Download</button>
     </div>
+
   </div>
 
   <div class="container" id="about">
     <div class="card">
       <h2>About</h2>
-      <p>This page hosts your free downloads in a galaxy-themed interface with glowing buttons, icons, and categories.</p>
+      <p>This page hosts downloads with icons, categories, and stylish buttons — all galaxy‑themed.</p>
     </div>
   </div>
 
@@ -290,22 +248,18 @@
   </footer>
 
   <script>
-    // Open download link in new tab
     function downloadFile(link) {
       window.open(link, "_blank", "noopener");
     }
 
-    // Scroll reveal animation
     const cards = document.querySelectorAll(".card");
     function revealOnScroll() {
       cards.forEach(card => {
-        const top = card.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
+        if (card.getBoundingClientRect().top < window.innerHeight - 100) {
           card.classList.add("show");
         }
       });
     }
-
     window.addEventListener("scroll", revealOnScroll);
     revealOnScroll();
   </script>
